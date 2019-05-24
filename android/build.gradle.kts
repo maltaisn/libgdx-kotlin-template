@@ -22,7 +22,7 @@ android {
         versionName = rootProject.extra["appVersion"] as String
     }
     buildTypes {
-        getByName("release") {
+        named("release") {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
@@ -33,7 +33,7 @@ android {
     }
 }
 
-configurations.create("natives")
+val natives by configurations.creating
 
 dependencies {
     val gdxVersion: String by project
@@ -44,11 +44,11 @@ dependencies {
 
     implementation("com.badlogicgames.gdx:gdx-backend-android:$gdxVersion")
 
-    "natives"("com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi")
-    "natives"("com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a")
-    "natives"("com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-arm64-v8a")
-    "natives"("com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86")
-    "natives"("com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86_64")
+    natives("com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi")
+    natives("com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a")
+    natives("com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-arm64-v8a")
+    natives("com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86")
+    natives("com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86_64")
 }
 
 // Called every time gradle gets executed, takes the native dependencies of
@@ -56,7 +56,7 @@ dependencies {
 // so they get packed with the APK.
 tasks.register("copyAndroidNatives") {
     doFirst {
-        configurations.named("natives").get().files.forEach { jar ->
+        natives.files.forEach { jar ->
             val outputDir = file("libs/" + jar.nameWithoutExtension.substringAfterLast("natives-"))
             outputDir.mkdirs()
             copy {
