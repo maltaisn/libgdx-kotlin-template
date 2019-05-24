@@ -7,11 +7,11 @@ val mainClassName = "com.example.desktop.DesktopLauncher"
 
 dependencies {
     val gdxVersion: String by project
-    
+
     implementation(project(":core"))
 
     implementation(kotlin("stdlib"))
-    
+
     implementation("com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion")
     implementation("com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop")
 }
@@ -23,7 +23,7 @@ java {
 
 // Use this task to run the game if IntelliJ run application configuration doesn't work.
 tasks.register<JavaExec>("run") {
-    dependsOn(tasks.classes)
+    jvmArgs("-XstartOnFirstThread")
     main = mainClassName
     classpath = sourceSets.main.get().runtimeClasspath
     standardInput = System.`in`
