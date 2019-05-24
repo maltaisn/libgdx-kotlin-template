@@ -8,7 +8,6 @@ android {
     compileSdkVersion(28)
     sourceSets {
         named("main") {
-            java.srcDir("src/main/kotlin")
             res.srcDir("res")
             assets.srcDir("assets")
             jniLibs.srcDir("libs")
