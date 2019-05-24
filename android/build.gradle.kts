@@ -3,6 +3,9 @@ plugins {
     kotlin("android")
 }
 
+val appVersionCode: Int by rootProject.extra
+val appVersion: String by rootProject.extra
+
 android {
     buildToolsVersion("28.0.3")
     compileSdkVersion(28)
@@ -17,8 +20,8 @@ android {
         applicationId = "com.example.android"
         minSdkVersion(14)
         targetSdkVersion(28)
-        versionCode = rootProject.extra["appVersionCode"] as Int
-        versionName = rootProject.extra["appVersion"] as String
+        versionCode = appVersionCode
+        versionName = appVersion
     }
     buildTypes {
         named("release") {
