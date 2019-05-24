@@ -8,10 +8,7 @@ buildscript {
     val junitVersion by extra("4.12")
 
     repositories {
-        mavenCentral()
-        maven("https://plugins.gradle.org/m2/")
-        maven("https://oss.sonatype.org/content/repositories/snapshots/")
-        jcenter()
+        gradlePluginPortal()
         google()
     }
     dependencies {
@@ -20,19 +17,13 @@ buildscript {
     }
 }
 
+plugins {
+    base
+}
+
 allprojects {
     repositories {
-        mavenLocal()
-        mavenCentral()
         jcenter()
         google()
-        maven("https://oss.sonatype.org/content/repositories/snapshots/")
-        maven("https://oss.sonatype.org/content/repositories/releases/")
     }
 }
-
-tasks.register<Delete>("clean") {
-    delete(buildDir)
-}
-
-buildDir = file("build/")
