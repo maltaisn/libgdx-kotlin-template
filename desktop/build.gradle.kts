@@ -23,12 +23,16 @@ java {
 
 // Use this task to run the game if IntelliJ run application configuration doesn't work.
 tasks.register<JavaExec>("run") {
-    jvmArgs("-XstartOnFirstThread")
+
     main = mainClassName
     classpath = sourceSets.main.get().runtimeClasspath
     standardInput = System.`in`
     workingDir = assetsDir
     isIgnoreExitValue = true
+
+    if (System.getProperty("os.name").toLowerCase().contains("mac")) {
+        jvmArgs("-XstartOnFirstThread")
+    }
 }
 
 // Use this task to create a fat jar.
