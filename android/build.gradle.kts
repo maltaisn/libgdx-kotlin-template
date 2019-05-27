@@ -3,8 +3,8 @@ plugins {
     kotlin("android")
 }
 
-val appVersionCode: Int by rootProject.extra
-val appVersion: String by rootProject.extra
+val appVersionCode: Int by project
+val appVersion: String by project
 
 android {
     buildToolsVersion("28.0.3")
@@ -35,7 +35,7 @@ android {
     }
 }
 
-val natives by configurations.creating
+val natives: Configuration by configurations.creating
 
 dependencies {
     val gdxVersion: String by project
