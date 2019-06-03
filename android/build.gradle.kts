@@ -76,3 +76,27 @@ tasks.whenTaskAdded {
         dependsOn("copyAndroidNatives")
     }
 }
+
+
+// Task to copy the assets to the android module assets dir
+val assetsPath = android.sourceSets.named("main").get().assets.srcDirs.last().path
+
+tasks.register("copyTestAssets") {
+    file(assetsPath).mkdirs()
+    copy {
+        from("../assets")
+        into("src/main/assets")
+    }
+}
+
+tasks.register<Delete>("cleanTestAssets") {
+    delete(assetsPath)
+}
+
+tasks.named("clean") {
+    finalizedBy("cleanTestAssets")
+}
+
+tasks.named("build") {
+    finalizedBy("copyTestAssets")
+}

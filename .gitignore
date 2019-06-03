@@ -5,6 +5,7 @@
 ## Android
 /android/src/main/jniLibs/*/libgdx.so
 /android/gen/
+/android/src/main/assets
 
 ## Gradle
 /local.properties

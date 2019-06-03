@@ -2,7 +2,7 @@ plugins {
     kotlin("jvm")
 }
 
-val assetsDir = file("../android/src/main/assets")
+val assetsDir = file("../assets")
 val mainClassName = "com.example.desktop.DesktopLauncher"
 
 dependencies {
@@ -35,6 +35,7 @@ tasks.register<JavaExec>("run") {
 }
 
 // Use this task to create a fat jar.
+// The jar file is generated in desktop/build/libs
 tasks.register<Jar>("dist") {
     from(files(sourceSets.main.get().output.classesDirs))
     from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
