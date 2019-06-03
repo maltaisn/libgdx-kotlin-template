@@ -1,8 +1,10 @@
-## Android Studio and Intellij and Android in general
-/android/libs/**
-/android/gen/
-.idea/
+## IntelliJ
+/.idea/
 *.iml
+
+## Android
+/android/src/main/jniLibs/*/libgdx.so
+/android/gen/
 
 ## Gradle
 /local.properties

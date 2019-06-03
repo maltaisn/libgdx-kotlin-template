@@ -2,7 +2,7 @@ plugins {
     kotlin("jvm")
 }
 
-val assetsDir = file("../android/assets")
+val assetsDir = file("../android/src/main/assets")
 val mainClassName = "com.example.desktop.DesktopLauncher"
 
 dependencies {
