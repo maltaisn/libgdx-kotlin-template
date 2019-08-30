@@ -90,7 +90,7 @@ tasks.register("copyTestAssets") {
     file(assetsPath).mkdirs()
     copy {
         from("../assets")
-        into("src/main/assets")
+        into(assetsPath)
     }
 }
 
