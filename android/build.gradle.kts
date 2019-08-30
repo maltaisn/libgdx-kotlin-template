@@ -9,13 +9,6 @@ val appVersion: String by project
 android {
     buildToolsVersion("29.0.3")
     compileSdkVersion(30)
-    sourceSets {
-        named("main") {
-            res.srcDir("res")
-            assets.srcDir("assets")
-            jniLibs.srcDir("libs")
-        }
-    }
     defaultConfig {
         applicationId = "com.example.android"
         minSdkVersion(14)
