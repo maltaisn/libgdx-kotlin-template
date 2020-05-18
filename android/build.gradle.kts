@@ -3,8 +3,6 @@ plugins {
     kotlin("android")
 }
 
-val appVersionCode: Int by project
-val appVersion: String by project
 
 android {
     buildToolsVersion("28.0.3")
@@ -17,10 +15,11 @@ android {
         }
     }
     defaultConfig {
+        val appVersion: String by project
         applicationId = "com.example.android"
         minSdkVersion(14)
         targetSdkVersion(28)
-        versionCode = appVersionCode
+        versionCode = appVersion.split('.').joinToString("") { it.padStart(2, '0') }.toInt()
         versionName = appVersion
     }
     buildTypes {
