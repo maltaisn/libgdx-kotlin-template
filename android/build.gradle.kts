@@ -3,17 +3,16 @@ plugins {
     kotlin("android")
 }
 
-val appVersionCode: Int by project
-val appVersion: String by project
 
 android {
     buildToolsVersion("29.0.3")
     compileSdkVersion(30)
     defaultConfig {
+        val appVersion: String by project
         applicationId = "com.example.android"
         minSdkVersion(14)
         targetSdkVersion(30)
-        versionCode = appVersionCode
+        versionCode = appVersion.split('.').joinToString("") { it.padStart(2, '0') }.toInt()
         versionName = appVersion
     }
     buildTypes {
@@ -74,7 +73,6 @@ tasks.whenTaskAdded {
         dependsOn("copyAndroidNatives")
     }
 }
-
 
 // Task to copy the assets to the android module assets dir
 val assetsPath = android.sourceSets.named("main").get().assets.srcDirs.last().path
