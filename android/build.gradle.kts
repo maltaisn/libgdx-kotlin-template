@@ -3,10 +3,9 @@ plugins {
     kotlin("android")
 }
 
-
 android {
-    buildToolsVersion("28.0.3")
-    compileSdkVersion(28)
+    buildToolsVersion("29.0.3")
+    compileSdkVersion(30)
     sourceSets {
         named("main") {
             res.srcDir("res")
@@ -18,7 +17,7 @@ android {
         val appVersion: String by project
         applicationId = "com.example.android"
         minSdkVersion(14)
-        targetSdkVersion(28)
+        targetSdkVersion(30)
         versionCode = appVersion.split('.').joinToString("") { it.padStart(2, '0') }.toInt()
         versionName = appVersion
     }
